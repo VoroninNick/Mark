@@ -1,0 +1,72 @@
+body
+	font-size: 16px
+
+=filter($filter-type,$filter-amount)
+	-webkit-filter: $filter-type+unquote('(#{$filter-amount})')
+	-moz-filter: $filter-type+unquote('(#{$filter-amount})')
+	-ms-filter: $filter-type+unquote('(#{$filter-amount})')
+	-o-filter: $filter-type+unquote('(#{$filter-amount})')
+	filter: $filter-type+unquote('(#{$filter-amount})')
+
+=grayscale
+	filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale") // Firefox 10+, Firefox on Android
+	filter: gray // IE6-9
+	-webkit-filter: grayscale(100%) // Chrome 19+, Safari 6+, Safari 6+ iOS
+	filter: grayscale(100%)
+
+=disable-grayscale
+	filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
+	-webkit-filter: grayscale(0%)
+	filter: grayscale(0%)
+
+.regular
+	font-size: 1.25em
+	font-weight: 300
+
+.wrapper
+	height: 100vh
+	font-family: 'Roboto', sans-serif
+	background-size: cover
+	background-position: center
+	width: 100%
+	color: #fff
+	.description-text
+		padding: 50px
+		font-size: 1.25em
+		font-weight: 300
+		@media #{$small-only}
+			padding: 20px
+			text-align: center
+	.logo
+		height: 200px
+		width: 400px
+		background-size: contain
+		background-repeat: no-repeat
+		background-position: center
+		margin: 0 auto
+		position: relative
+		right: 15px
+		@media #{$small-only}
+			height: 100px
+			width: 200px
+	.middle-text
+		margin-top: 50px
+		@media #{$small-only}
+			text-align: center
+	.align-right
+		text-align: right
+		margin-bottom: 20px
+		@media #{$small-only}
+			text-align: center
+		span
+			font-weight: 500
+	.subtitle
+		position: absolute
+		top: 80%
+		left: 50%
+		+translate(-50%,0)
+		font-size: 2em
+		@media #{$small-only}
+			width: 100%
+			font-size: 1.5em
+			text-align: center
